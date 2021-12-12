@@ -7,7 +7,7 @@ class Starships extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            starships: []
+            data: []
         }
     }
 
@@ -19,7 +19,7 @@ class Starships extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        starships: result
+                        data: result
                     });
                 },
                 (error) => {
@@ -32,14 +32,14 @@ class Starships extends React.Component {
     }
 
     render () {
-        const { error, isLoaded, starships } = this.state;
+        const { error, isLoaded, data } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
             return (
-                <Results content={starships} />
+                <Results content={data} />
             );
         }
     }

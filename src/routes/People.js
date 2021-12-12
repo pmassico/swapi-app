@@ -9,7 +9,7 @@ class People extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            people: []
+            data: []
         }
     }
 
@@ -21,7 +21,7 @@ class People extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        people: result
+                        data: result
                     });
                 },
                 (error) => {
@@ -34,14 +34,14 @@ class People extends React.Component {
     }
 
     render () {
-        const { error, isLoaded, people } = this.state;
+        const { error, isLoaded, data } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
             return (
-                <Results content={people} />
+                <Results content={data} />
             );
         }
     }

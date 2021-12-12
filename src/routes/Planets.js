@@ -7,7 +7,7 @@ class Planets extends React.Component {
         this.state = {
             error: null,
             isLoaded: false,
-            planets: []
+            data: []
         }
     }
 
@@ -19,7 +19,7 @@ class Planets extends React.Component {
                 (result) => {
                     this.setState({
                         isLoaded: true,
-                        planets: result
+                        data: result
                     });
                 },
                 (error) => {
@@ -32,14 +32,14 @@ class Planets extends React.Component {
     }
 
     render () {
-        const { error, isLoaded, planets } = this.state;
+        const { error, isLoaded, data } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
             return (
-                <Results content={planets} />
+                <Results content={data} />
             );
         }
     }

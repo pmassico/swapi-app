@@ -13,28 +13,19 @@ class Results extends React.Component {
     }
 
     render () {
-        let results = this.props.content.results;
         return(
             <table className="table table-dark">
-                <tbody id="tbody">
-                {results.map((result)=>{
-                    // new row per result
-                    let tr = document.createElement("tr");
-                    let tdName = document.createElement("td");
-                    let tdButton = document.createElement("td");
-                    let button = document.createElement("button");
-
-                    button.classList.add("btn", "btn-outline-primary");
-                    button.innerText = "Details";
-
-                    tdName.innerText = result["name"];
-                    tdButton.appendChild(button)
-
-                    tr.appendChild(tdName);
-                    tr.appendChild(tdButton);
-
-                    document.getElementById("tbody").appendChild(tr);
-                })}
+                <tbody>
+                { this.props.content.results.map((item, index) => (
+                    <tr key={index}>
+                        <td>{item["name"]}</td>
+                        <td><button
+                            type="button"
+                            className="btn btn-outline-primary"
+                        >Details</button>
+                        </td>
+                    </tr>
+                ))}
                 </tbody>
             </table>
         );

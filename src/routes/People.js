@@ -41,20 +41,7 @@ class People extends React.Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <table className="table table-dark">
-                    <tbody>
-                        { people.results.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item["name"]}</td>
-                                    <td><button
-                                        type="button"
-                                        className="btn btn-outline-primary"
-                                    >Details</button>
-                                    </td>
-                                </tr>
-                            ))}
-                    </tbody>
-                </table>
+                <Results content={people} />
             );
         }
     }

@@ -2,12 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import People from "./routes/People";
+import Planets from "./routes/Planets";
+import Starships from "./routes/Starships";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<App />} >
+                <Route path="people" element={<People />} />
+                <Route path="planets" element={<Planets />} />
+                <Route path="starships" element={<Starships />} />
+            </Route>
+        </Routes>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
